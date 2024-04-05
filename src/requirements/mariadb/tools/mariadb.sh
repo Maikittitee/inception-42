@@ -1,10 +1,12 @@
 #!/bin/bash
 
+echo "hello $DB_NAME"
+
 service mariadb start
 
-echo "hello"
 if [ ! -d "/var/lib/mysql/$DB_NAME" ]
 then
+	# echo "try to create database"
 	# Secure Databases
 	echo -e "\nY\nY\n$DB_ROOT\n$DB_ROOT\nY\nY\nY\nY" | mysql_secure_installation
 

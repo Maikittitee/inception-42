@@ -4,16 +4,16 @@ services:
     container_name: wordpress
     image: wordpress
     build:
-      context: requirements/wordpress
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
-    depends_on:
-      - mariadb
+    # depends_on:
+    #   - mariadb
     networks:
       - network
     env_file:
       - .env
     volumes:
-      - wordpress:/var/www/html
+      - wordpress:/var/www/html/wordpress
     restart: always
   nginx:
     container_name: nginx
@@ -50,13 +50,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device:  /home/ksaelim/data/wordpress
+      device:  /home/maikittitee/Documents/wordpress
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/ksaelim/data/mariadb
+      device: /home/maikittitee/Documents/mariadb
 
 networks:
   network:
