@@ -18,7 +18,7 @@ down:
 	docker compose -f ./srcs/docker-compose.yml down
 
 clean: down
-	docker rmi mariadb nginx wordpress
+	docker rmi mariadb_image nginx_image wordpress_image
 	@sudo rm -rf $(WEB_DIR)
 
 re: clean all
