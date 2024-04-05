@@ -4,7 +4,7 @@ if [ ! -e "/var/www/html/wordpress/wp-config.php" ]
 then
 	cd /var/www/html/wordpress
 	cp wp-config-sample.php wp-config.php
-	chmod 777 wp-config.php
+	chmod 644 wp-config.php
 
 	# Init Wordpress Databases
 	sed -i "s/database_name_here/${DB_NAME}/g" wp-config.php
