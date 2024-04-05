@@ -2,6 +2,7 @@
 
 service mariadb start
 
+echo "hello"
 if [ ! -d "/var/lib/mysql/$DB_NAME" ]
 then
 	# Secure Databases
@@ -15,5 +16,5 @@ then
 fi
 
 service mariadb stop
-
+echo "eiei $@"
 exec "$@"
