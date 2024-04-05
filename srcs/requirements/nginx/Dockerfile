@@ -9,8 +9,10 @@ RUN	openssl req -x509 -nodes \
 	-keyout /etc/nginx/ssl/ktunchar.key \
 	-out /etc/nginx/ssl/ktunchar.crt \
 	-subj "/C=TH/L=Bangkok/O=42/CN=ktunchar.42.fr"
+	
+RUN	rm -rf /etc/nginx/sites-enabled/default && rm -rf /etc/nginx/sites-available/default
 
-COPY ./config/default.conf /etc/nginx/conf.d/default.conf
+COPY ./config/nginx.conf /etc/nginx/conf.d/
 # COPY ./index.html /var/www/html/index.html
 
 EXPOSE 443

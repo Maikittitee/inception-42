@@ -6,8 +6,8 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
-    # depends_on:
-    #   - mariadb
+    depends_on:
+      - mariadb
     networks:
       - network
     env_file:
@@ -50,13 +50,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device:  /home/maikittitee/Documents/wordpress
+      device: ~/Documents/wordpress
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/maikittitee/Documents/mariadb
+      device: ~/Documents/mariadb
 
 networks:
   network:
