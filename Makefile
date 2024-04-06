@@ -15,10 +15,19 @@ up:
 	docker compose -f ./srcs/docker-compose.yml up -d --build
 
 down:
+	docker exec -it wordpress sh -c "rm -if /var/www/html/*"
+	docker exec -it mariadb sh -c "rm -if /var/lib/mysql/*"
 	docker compose -f ./srcs/docker-compose.yml down
 
 clean: down
 	docker rmi mariadb_image nginx_image wordpress_image
 	@sudo rm -rf $(WEB_DIR)
 
+fclean: clean
+	docker system prune -af
+	docker volume prune -f
+	rm -rf $(WEB_DIR)
+
 re: clean all
+
+.PHONY all create_dir $(NAME) up down clean re fclean
