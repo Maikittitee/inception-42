@@ -36,6 +36,12 @@ RUN chmod -R 777 /var/www/html
 
 WORKDIR /var/www/html/
 
+# RUN wget https://th.wordpress.org/latest-th.tar.gz && tar -xpvf latest-th.tar.gz && mv wordpress/* . \ 
+# 	&& rm -rf latest-th.tar.gz wordpress && \
+# 	chown -R www-data:www-data * && \
+# 	chmod -R 777 * 
+# 	cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+
 ENTRYPOINT [ "/usr/local/bin/setup.sh" ]
 
 CMD [ "php-fpm7.4", "-F" ]
